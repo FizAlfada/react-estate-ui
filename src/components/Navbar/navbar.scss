@@ -1,3 +1,5 @@
+@import "../../responsive.scss";
+
 nav {
   height: 100px;
   display: flex;
@@ -6,6 +8,10 @@ nav {
 
   a {
     transition: all 0.4s ease;
+
+    @include sm {
+      display: none;
+    }
 
     &:hover {
       scale: 1.05;
@@ -24,10 +30,19 @@ nav {
       font-weight: bold;
       font-size: 20px;
       gap: 10px;
-    }
 
-    img {
-      width: 28px;
+      img {
+        width: 28px;
+      }
+
+      span {
+        @include md {
+          display: none;
+        }
+        @include sm {
+          display: initial;
+        }
+      }
     }
   }
 
@@ -42,10 +57,56 @@ nav {
     a {
       padding: 12px 24px;
       margin: 20px;
+
+      @include sm {
+        display: none;
+      }
     }
 
     .register {
       background-color: #fece51;
+    }
+
+    .menuIcon {
+      display: none;
+      z-index: 999;
+
+      @include sm {
+        display: initial;
+      }
+
+      img {
+        width: 36px;
+        height: 36px;
+        cursor: pointer;
+      }
+    }
+
+    .menu {
+      position: absolute;
+      top: 0;
+      right: -50%;
+      height: 100vh;
+      width: 50%;
+      background-color: black;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+
+      transition: all 1s ease;
+
+      &.active {
+        right: 0;
+      }
+
+      @include sm {
+        a {
+          display: initial;
+        }
+      }
     }
   }
 }
